@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - Yatra Bytes</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <style>
+    .register-container {
+      max-width: 450px;
+      margin: 100px auto;
+      padding: 30px;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .register-container input[type="text"],
+    .register-container input[type="email"],
+    .register-container input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .register-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .register-container button:hover {
+      background-color: #218838;
+    }
+
+    .register-container p {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .register-container a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .register-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Yatra Bytes</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Book a Cab</a></li>
+        <li><a href="#">Fleet</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="register-container">
+    <h2>Create Your Account</h2>
+    <form method="post" action="">
+      {% csrf_token %}
+      {% if error %}
+      <p style="color: red;">{{ error }}</p>
+      {% endif %}
+      <input type="text" name="full_name" placeholder="Full Name" required />
+
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+      <button type="submit">Register</button>
+      <p>Already have an account? <a href="{% url 'login'%}">Login Here</a></p>
+
+    </form>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Yatra Bytes. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

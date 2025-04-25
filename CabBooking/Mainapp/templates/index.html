@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yatra Bytes - Your Smart Cab Partner</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      
+      <div class="logo">Yatra Bytes</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home'%}">Home</a></li>
+        <li><a href="#">Book a Cab</a></li>
+        <li><a href="#">Fleet</a></li>
+        <li><a href="{% url 'login'%}">Login</a></li>
+      </ul>
+    </nav>
+    
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>One-Way Cabs, Reimagined</h1>
+      <p>Book affordable, fast, and smart intercity rides powered by intelligent fleet optimization.</p>
+      <a href="#" class="btn-primary">Book Now</a>
+    </div>
+    <div class="hero-image">
+      <img src="{% static 'images/cab2.png' %}" alt="Cab Illustration" width="300px" height="350px"/>
+    </div>
+  </section>
+
+  <section class="why-us">
+    <h2>Why Ride with Yatra Bytes?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>One-Way Fares</h3>
+        <p>Pay only for the distance you travel. No return fare included!</p>
+      </div>
+      <div class="feature-box">
+        <h3>Smart Cab Matching</h3>
+        <p>AI-based routing to reduce waiting time and costs.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Trusted Drivers</h3>
+        <p>Verified, experienced drivers with top ratings.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Live Tracking</h3>
+        <p>Track your ride in real-time with built-in safety features.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to Ride?</h2>
+    <p>Book your intercity cab in seconds. Download the app or book online.</p>
+    <a href="#" class="btn-secondary">Download App</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Yatra Bytes. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

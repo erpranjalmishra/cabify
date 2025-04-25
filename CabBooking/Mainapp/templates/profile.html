@@ -1,0 +1,246 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Profile - Yatra Bytes</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .profile-box {
+      background: #f8f8f8;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .profile-box h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .profile-box p {
+      font-size: 16px;
+      margin: 6px 0;
+      color: #555;
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #6a11cb;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .home-link:hover {
+      background: #2575fc;
+    }
+
+    .ride-section h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .ride-types {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .ride-option {
+      background: #eaeaea;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .ride-option:hover {
+      background: #6a11cb;
+      color: white;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: 600;
+      display: block;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    .book-btn {
+      background: #6a11cb;
+      border: none;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .book-btn:hover {
+      background: #2575fc;
+    }
+
+    .fare-results {
+      margin-top: 30px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .vehicle-card {
+      background: #f8f8f8;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 180px;
+    }
+
+    .vehicle-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .vehicle-card h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Yatra Bytes</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="#">Book a Cab</a></li>
+        <li><a href="#">Fleet</a></li>
+        <li><a href="{% url 'login' %}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="profile-hero">
+    <div class="container">
+      <!-- Profile Section -->
+      <div class="profile-box">
+        <h2>Welcome, {{ user.full_name }}</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <a href="{% url 'home' %}" class="home-link">Logout</a>
+      </div>
+
+      <!-- Ride Booking Section -->
+      <div class="ride-section">
+        <h1>🚗 Book Your Ride</h1>
+        <div class="ride-types">
+          <div class="ride-option">Local</div>
+          <div class="ride-option">One Way</div>
+          <div class="ride-option">Outstation</div>
+          <div class="ride-option">Tour</div>
+          <div class="ride-option">Airport Transfer</div>
+        </div>
+
+        <form class="booking-form">
+          <div class="form-group">
+            <label>Source City</label>
+            <input type="text" placeholder="Enter Source City" required>
+          </div>
+          <div class="form-group">
+            <label>Destination City</label>
+            <input type="text" placeholder="Enter Destination City" required>
+          </div>
+          <div class="form-group">
+            <label>Pickup Date & Time</label>
+            <input type="datetime-local" required>
+          </div>
+          <button type="submit" class="book-btn">Book Now</button>
+        </form>
+
+        <!-- Fare Result Display -->
+        <div class="fare-results" id="fareResults" style="display: none;">
+          <h2>Available Rides</h2>
+          <div class="vehicle-card">
+            <img src="{% static 'images/autop.jpeg' %}" alt="Auto" />
+            <h3>Auto</h3>
+            <p>Estimated Fare: ₹<span id="autoPrice">--</span></p>
+          </div>
+          <div class="vehicle-card">
+            <img src="{% static 'images/bikep.jpg' %}" alt="Bike" />
+            <h3>Bike</h3>
+            <p>Estimated Fare: ₹<span id="bikePrice">--</span></p>
+          </div>
+          <div class="vehicle-card">
+            <img src="{% static 'images/cabp.png' %}" alt="Cab" />
+            <h3>Cab</h3>
+            <p>Estimated Fare: ₹<span id="cabPrice">--</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Yatra Bytes. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelector(".booking-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const autoPrice = Math.floor(Math.random() * 100 + 100);
+      const bikePrice = Math.floor(Math.random() * 80 + 80);
+      const cabPrice = Math.floor(Math.random() * 150 + 150);
+
+      document.getElementById("autoPrice").innerText = autoPrice;
+      document.getElementById("bikePrice").innerText = bikePrice;
+      document.getElementById("cabPrice").innerText = cabPrice;
+
+      document.getElementById("fareResults").style.display = "flex";
+    });
+  </script>
+</body>
+</html>
