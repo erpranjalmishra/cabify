@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-#=z6))6$)zdv&50rc8hq*j7boc0t@wo8a*sk0e^v9$z&chz@5^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://cabify-1m2q.onrender.com/']
+ALLOWED_HOSTS = ['https://cabify-1m2q.onrender.com/','.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
