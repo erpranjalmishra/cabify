@@ -3,7 +3,7 @@ title: "Nano Banana"
 datePublished: Sun Aug 31 2025 07:35:52 GMT+0000 (Coordinated Universal Time)
 cuid: cmezdm9od000a02l71v0xbun7
 slug: nano-banana
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1756625332234/46a4feea-9b58-41df-bb18-157589c81fdf.avif
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1756625861461/69182fd1-56b1-4756-b24b-4439fe60716a.webp
 
 ---
 
