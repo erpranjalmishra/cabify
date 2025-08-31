@@ -1,5 +1,5 @@
 ---
-title: "🤖 Meet Vyommitra: India’s First Space Robot Astronaut"
+title: "Meet Vyommitra: India’s First Space Robot Astronaut"
 datePublished: Thu Aug 28 2025 18:30:00 GMT+0000 (Coordinated Universal Time)
 cuid: cmex9yqad000502judaod1m7f
 slug: meet-vyommitra-indias-first-space-robot-astronaut
